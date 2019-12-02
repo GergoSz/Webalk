@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class VodkaService {
 	private final VodkaRepo vodkaRepo;
-	
+
 	public Vodka getVodkaById(Long id) {
 		return vodkaRepo.findById(id).orElse(new Vodka());
 	}
@@ -26,4 +26,6 @@ public class VodkaService {
 	public Vodka createVodka(Vodka vodka) {
 		return vodkaRepo.saveAndFlush(vodka);
 	}
+
+	public Vodka getVodkaByName(String name) { return vodkaRepo.findByName(name); }
 }

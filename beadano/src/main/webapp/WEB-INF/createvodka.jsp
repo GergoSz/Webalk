@@ -17,8 +17,8 @@
 <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="menubutton">&#9776; </span>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/createvodka" class="menuButton">1. Add car </a>
-    <a href="/vodka" class="menuButton">2. List cars </a>
+    <a href="/createvodka" class="menuButton">1. Add vodka </a>
+    <a href="/vodka" class="menuButton">2. List vodka </a>
 </div>
 
     <section id="sect1" class="sec-wrap inner">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="content">
-    <form action="vodka" method="post">
+            <form action="/vodka" method="post">
 
                   <p> Brand: <span><input type="text" name="brand" /></span></p>
 
@@ -43,8 +43,8 @@
 
 
 
-        <a href="/"><-- Vissza</a>
-    </form>
+                <a href="/"><-- Vissza</a>
+            </form>
         </div>
     </section>
 

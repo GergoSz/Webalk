@@ -11,18 +11,15 @@ import lombok.Data;
 @Data
 public class Vodka {
 	    @Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
 	    @Column(nullable = false)
 	    private String name;
-	    
+		private int alc;
+		private int volume;
 	    private String brand;
-	    
-	    private int alc;
-	    private int volume;
-	    
-	    
+
 	    
 		public Vodka(String name, String brand, int alc, int volume) {
 			super();
@@ -32,14 +29,6 @@ public class Vodka {
 			this.volume = volume;
 		}
 
-
-
-		public Vodka() {
-			super();
-		}
-
-
-
 		public Vodka(Long id, String name, String brand, int alc, int volume) {
 			super();
 			this.id = id;
@@ -48,6 +37,9 @@ public class Vodka {
 			this.alc = alc;
 			this.volume = volume;
 		}
-	    
-	    
+
+		public Vodka() {
+			super();
+		}
+
 }

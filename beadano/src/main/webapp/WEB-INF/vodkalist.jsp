@@ -16,8 +16,8 @@
     <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="menubutton">&#9776; </span>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/createvodka" class="menuButton">1. Add car </a>
-        <a href="/vodka" class="menuButton">2. List cars </a>
+        <a href="/createvodka" class="menuButton">1. Add vodka </a>
+        <a href="/vodka" class="menuButton">2. List vodka </a>
     </div>
 
     <section id="main" onclick="closeNav()"></section>
@@ -44,15 +44,16 @@
                 <c:forEach items = "${vodkalist}" var="vodka">
                     <tr href="/vodka/displaydetails"
                         onclick="event.preventDefault();
-                        document.getElementById('magic-form').submit();">
+                        document.getElementById('magic-form${vodka.id}').submit();">
                             <td>${vodka.brand}</td>
                             <td>${vodka.name}</td>
+                        <form action="vodka/displaydetails" method="post" id="magic-form${vodka.id}">
+                            <input type="hidden" name="id" value="${vodka.id}">
+                        </form>
                         </tr>
 
 
-                    <form action="vodka/displaydetails" method="post" id="magic-form">
-                                <input type="hidden" name="id" value="${vodka.id}">
-                        </form>
+
                     </tr>
                 </c:forEach>
             </table>

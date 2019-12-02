@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URI;
 
@@ -25,22 +26,22 @@ public class VodkaController {
 	
 	@GetMapping
 	public ModelAndView showVodkaList() {
+
 		ModelAndView mav = JSPController.mav;
 		mav.setViewName("vodkalist");
 		mav.addObject("vodkalist", vs.getAllVodka());
-		
-		
+
 		return mav;
 	}
 
 	@PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-	public @ResponseBody ResponseEntity<Vodka> createVodka(@RequestParam("name") String name,
-															   @RequestParam("brand") String brand,
-															   @RequestParam("alc") int alc,
-															   @RequestParam("volume") int volume){
+	public @ResponseBody RedirectView createVodka(  @RequestParam("alc") int alc, @RequestParam("name") String name, @RequestParam("brand") String brand, @RequestParam("volume") int volume){
+
 		Vodka saved = vs.createVodka(new Vodka(name, brand, alc, volume) );
-		
-		return ResponseEntity.created(URI.create("" + saved.getId())).body(saved);
+
+		return  new RedirectView("/vodka");
+
+		//return ResponseEntity.created(URI.create("" + saved.getId())).body(saved);
 	}
 	
 	@PostMapping(value = "/displaydetails" ,consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
